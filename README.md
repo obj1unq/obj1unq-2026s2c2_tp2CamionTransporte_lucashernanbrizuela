@@ -1,6 +1,10 @@
 # Camión de transporte
 
-Una empresa de transporte quiere administrar mejor las cargas que lleva un camión, y para eso requiere un sistema que le permita planificar qué cosas puede llevar el camión considerando dos aspectos: no sobrepasar su capacidad y que el destino sea capaz de recibir la carga. 
+Una empresa de transporte quiere administrar mejor las cargas que lleva un camión, y para eso requiere un sistema que le permita planificar qué cosas puede llevar el camión considerando dos aspectos: 
+
+- no sobrepasar su capacidad
+- que el destino sea capaz de recibir la carga. 
+
 Por otro lado, las cosas que transporta tienen un nivel de peligrosidad, que es usado para impedir que ciertas cosas demasiado peligrosas circulen en determinadas rutas.
 
 ## 1. Elementos a trasportar
@@ -38,6 +42,7 @@ Saber si el peso de cada uno de los objetos cargados es un número par.
 ### Ejemplo
 - Para un camión cargado con Bumblebee y 50 kg de arena a granel todo peso es par.
 - En cambio, si la arena a granel pesa 51 kg entonces no.
+
 
 ### 2.3 Hay alguno que pesa 
 Saber si el camión tiene alguna cosa que pesa exactamente una cantidad de kilogramos dada.
@@ -157,11 +162,11 @@ Se pide saber la cantidad total de bultos que está transportando el camión.
 
 ##### Caso 1
 Suponiendo que el camión tiene:
-- El contenedor portuario con Knight Rider y Bumblebee.
-- El embalaje de seguridad envolviendo los residuos radiactivos.
-- Arena a granel.
-- Un paquete de 50 ladrillos.
-- La batería antiaérea descargada.  
+- El contenedor portuario con Knight Rider y Bumblebee. //3
+- El embalaje de seguridad envolviendo los residuos radiactivos. //3
+- Arena a granel. //1
+- Un paquete de 50 ladrillos. //1
+- La batería antiaérea descargada. //1  
 Entonces la cantidad de bultos es: 9.
 
 ##### Caso 2
@@ -181,14 +186,14 @@ Entonces la cantidad de bultos es 4.
 
 Si el camión sufre un accidente, los elementos trasnportados sufren algún efecto. Éstos son los efectos para cada uno:
 
-- Knight Rider: no hace nada.
-- Bumblebee: cambia de modo (si estaba en robot pasa a auto y viceversa).
-- Paquete de ladrillos: pierde hasta 12 ladrillos. Si tenía menos de 12 queda en 0.
-- Arena a granel: agrega 20 kilos.
-- Batería antiaérea: descarga los misiles.
-- Contenedor portuario: hace que reaccione cada una de las cosas que tiene adentro (por ejemplo, si llevaba a Bumblebee, éste queda en modo robot).
-- Residuos radiactivos: agrega 15 kilos.
-- Embalaje de seguridad: nada.
+- Knight Rider: no hace nada.--
+- Bumblebee: cambia de modo (si estaba en robot pasa a auto y viceversa).--
+- Paquete de ladrillos: pierde hasta 12 ladrillos. Si tenía menos de 12 queda en 0. -- 
+- Arena a granel: agrega 20 kilos. --
+- Batería antiaérea: descarga los misiles. --
+- Contenedor portuario: hace que reaccione cada una de las cosas que tiene adentro (por ejemplo, si llevaba a Bumblebee, éste queda en modo robot). --
+- Residuos radiactivos: agrega 15 kilos. --
+- Embalaje de seguridad: nada. --
 
 Se pide modelar que un camión sufre un accidente, aplicando los efectos a los elementos cargados.
 
@@ -223,6 +228,11 @@ Al producirse un accidente:
 - El paquete de ladrillos queda con 0 ladrillos.
 - La batería antiaérea queda descargada.
   
+----
+
+
+
+
 
 ## 3 Transporte
 
@@ -280,8 +290,18 @@ En el camión quedan Bumblebee y arena a granel.
 * Realizar un diagrama estático del sistema de objetos
 
 * Describir los polimorfismos asociados a las colecciones: 
-
    - ¿Qué nombre tiene el tipo de los objetos polimórficos?
+   //NO ENTIENDO LA PREGUNTA
+   /*
+   Hay varios tipos de objetos polimorficos (caminos, cosas, almacenes)
+   */
    - ¿Qué mensajes componen ese tipo?
+   //En base al tipo cosas
+   /*
+   Los mensajes que componene a ese tipo son:
+    peso() / nivelDePeligrosidad() / bultosUsados() / aplicarEfectoDeAccidente()
+   */
    - ¿Qué objetos son los emisores de los mensajes polimórficos?
+   Los objetos que emiten los mensajes polimorficos
+    
    

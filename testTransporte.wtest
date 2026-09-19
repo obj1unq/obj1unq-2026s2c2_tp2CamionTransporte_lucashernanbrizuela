@@ -1,0 +1,53 @@
+import camion.*
+import cosas.*
+import caminos.*
+import almacen.*
+
+describe "Transporte" {
+    method initialize() {
+      almacen.agregarCosas(#{knightRider, residuosRadiactivos})
+      camion.cargar(bumblebee)
+      arenaAGranel.cambiarDePeso(50)
+      camion.cargar(arenaAGranel)
+    }
+  test "Caso: ruta 9 exitoso" {
+    camion.transportar(almacen, ruta9)
+    assert.equals(#{knightRider, residuosRadiactivos,bumblebee,arenaAGranel}, almacen.cosasAlmacenadas())
+    assert.equals(#{}, camion.cosasCargadasPorAhora())
+  }
+
+  test "Caso: ruta 9 fallido por peligrosidad" {
+    bumblebee.tranformarA()
+    assert.throwsException({ camion.transportar(almacen,caminosVecinales) })
+    assert.equals(#{knightRider,residuosRadiactivos}, almacen.cosasAlmacenadas())
+    assert.equals(#{bumblebee,arenaAGranel}, camion.cosasCargadasPorAhora())
+  }
+
+  test "Caso: caminos vecinales exitoso" {
+    caminosVecinales.pesoPermitido(2000)
+    camion.transportar(almacen, caminosVecinales)
+    assert.equals(#{knightRider, residuosRadiactivos,bumblebee,arenaAGranel}, almacen.cosasAlmacenadas())
+    assert.equals(#{}, camion.cosasCargadasPorAhora())
+  }
+
+  test "Caso: caminos vecinales fallido" {
+    caminosVecinales.pesoPermitido(300)
+    assert.throwsException({ camion.transportar(almacen, caminosVecinales) })
+    assert.equals(#{knightRider, residuosRadiactivos}, almacen.cosasAlmacenadas())
+    assert.equals(#{bumblebee,arenaAGranel}, camion.cosasCargadasPorAhora())    
+  }
+}
+
+
+
+/*
+Para todos los casos, el almacén tiene a Knight Rider y residuos radiactivos.  
+El camión arranca teniendo a Bumblebee en modo auto y arena a granel con 50 kg.
+
+
+Configurar los caminos vecinales con un máximo de 300 kg de soporte.  
+El camión no puede transportar por los caminos vecinales hacia el almacén.  
+En el almacén quedan Knight Rider y residuos radiactivos.  
+En el camión quedan Bumblebee y arena a granel.
+
+*/
