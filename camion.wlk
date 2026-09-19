@@ -105,6 +105,7 @@ object camion {
 ## 4 Reflexionar sobre los conceptos
 
 * Realizar un diagrama estático del sistema de objetos
+Diagrama hecho en la carpeta. diagrama
 
 * Describir los polimorfismos asociados a las colecciones: 
    - ¿Qué nombre tiene el tipo de los objetos polimórficos?
